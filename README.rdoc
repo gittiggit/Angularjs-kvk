@@ -1,28 +1,38 @@
-== README
+Tuto 2: Module and controller
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+step 1: Add a new js file named scripts.js
+step 2: Create a module
+    ```
+    var myApp = angular.module("myModule", []);
 
-Things you may want to cover:
+    ```
+step 2: Create a controller. A controller is nothing but a javascript function. Here I am going to create an
+         anonymous function, and to this function I am passing the $scope object, to this $scope object, I am
+         attaching a property message which will be abailable in the view.
+    ```
+    var myController = function($scope){
+        $scope.message = "Angularjs application"
+    }
+```
+step 3: Next step is to register that controller with the module.
 
-* Ruby version
+      ```
+      myApp.controller("myController", myController);
 
-* System dependencies
+      ```
+step 4: now we have to associate the module "myApp" with the "ng-app" directive in the view and
+        we have to associate that controller with "ng-controller" directive in the view.
+       ```
+        <div ng-app="myModule">
+          <h4>First example</h4>
+          20 + 30 = {{ 20 + 30}}
+        </div>
+        <div>
+          <h4>Second example</h4>
+          20 + 30 = {{ 20 + 30}} <p>Will not work, because this div not included the "ng-app" directive</p>
+        </div>
+        ```
+        Now it's going to bootstrap our angular application with the "myModule"
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
 
 
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
